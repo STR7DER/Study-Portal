@@ -6,10 +6,25 @@
   <style>
     body {
       margin: 0;
-      background: #0a0a0a;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
+
+      /* 🔥 Background image placeholder */
+      background: url("YOUR_BACKGROUND_IMAGE_URL_HERE") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Dark overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
     }
 
     h1 {
@@ -75,7 +90,7 @@
 
 <body>
 
-<h1>Game Hub</h1>
+<h1>🦇 Game Hub</h1>
 
 <div class="grid">
 
@@ -93,6 +108,22 @@
 
   <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/14305788/index.html')">
     <p>Drone Game</p>
+  </div>
+
+  <div class="card" onclick="loadGame('https://1games.io/game/dashmetry/')">
+    <p>Bootleg Geometry</p>
+  </div>
+
+  <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/8592025/index.html')">
+    <p>Bootleg Portal</p>
+  </div>
+
+  <div class="card" onclick="loadGame('https://1games.io/game/undead-invasion/')">
+    <p>Random Zombie Game</p>
+  </div>
+
+  <div class="card" onclick="loadGame('https://bottle-hop.1games.io/')">
+    <p>Random Bottle Game lmao</p>
   </div>
 
 </div>
