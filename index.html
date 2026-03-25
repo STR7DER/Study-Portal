@@ -5,77 +5,123 @@
 
   <style>
     body {
+      margin: 0;
       background: #0a0a0a;
       color: white;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
 
-    .game-container {
-      margin-top: 40px;
+    h1 {
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #151515;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #222;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .game-area {
+      margin-top: 20px;
+    }
+
+    iframe {
+      width: 90vw;
+      height: 60vh;
+      border: none;
+    }
+
+    .controls {
+      margin-top: 10px;
     }
 
     button {
-      margin: 10px;
-      padding: 12px 20px;
+      padding: 10px 16px;
       background: #222;
       color: white;
       border: none;
-      cursor: pointer;
       border-radius: 8px;
-      font-size: 14px;
+      cursor: pointer;
     }
 
     button:hover {
       background: #444;
-    }
-
-    iframe {
-      margin-top: 20px;
-      border: none;
     }
   </style>
 </head>
 
 <body>
 
-<div class="game-container">
+<h1>Game Hub</h1>
 
-  <!-- Fnaf (8bit) -->
-  <button onclick="loadGame('https://html-classic.itch.zone/html/15923602/index.html')">
-    Fnaf (8bit)
-  </button>
+<div class="grid">
 
-  <!-- Fnaf 4 -->
-  <button onclick="loadGame('https://html-classic.itch.zone/html/9374082/index.html')">
-    Fnaf 4
-  </button>
+  <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/15923602/index.html')">
+    <p>Fnaf (8bit)</p>
+  </div>
 
-  <!-- UltraKill -->
-  <button onclick="loadGame('https://html-classic.itch.zone/html/15139480/ultrakill/index.html')">
-    UltraKill
-  </button>
+  <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/9374082/index.html')">
+    <p>Fnaf 4</p>
+  </div>
 
-  <!-- Drone Game -->
-  <button onclick="loadGame('https://html-classic.itch.zone/html/14305788/index.html')">
-    Drone Game
-  </button>
+  <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/15139480/ultrakill/index.html')">
+    <p>UltraKill</p>
+  </div>
 
-  <!-- Sm Weird Ass Game Idk -->
-  <button onclick="loadGame('https://html-classic.itch.zone/html/7798668/ThwackFullWeb/index.html?v=1732313648')">
-    Sm Weird Ass Game Idk
-  </button>
+  <div class="card" onclick="loadGame('https://html-classic.itch.zone/html/14305788/index.html')">
+    <p>Drone Game</p>
+  </div>
 
 </div>
 
-<iframe id="gameFrame" width="900" height="500"></iframe>
+<div class="game-area">
+  <iframe id="gameFrame"></iframe>
+
+  <div class="controls">
+    <button onclick="openFullscreen()">Fullscreen</button>
+  </div>
+</div>
 
 <script>
 function loadGame(url) {
   document.getElementById('gameFrame').src = url;
 }
 
-// Panic key (press ESC to switch to Google)
+function openFullscreen() {
+  const iframe = document.getElementById("gameFrame");
+
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+}
+
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     window.location.href = "https://google.com";
